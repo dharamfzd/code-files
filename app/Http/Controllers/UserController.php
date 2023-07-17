@@ -78,6 +78,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->mobile = $request->mobile;
+        $user->profile_img = $request->profile_img->store('upload/image', 'public');
         $user->save();
         return back()->with('status', 'Profile updated successfully.');
     }
